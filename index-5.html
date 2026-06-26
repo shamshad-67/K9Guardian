@@ -1,0 +1,1658 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>K9Nova™ — Tactical No-Pull Dog Harness | Built for the Trail, Trusted at Home</title>
+<meta name="description" content="K9Nova Tactical No-Pull Harness. Military-grade nylon, zero-pull control, reflective night safety. Engineered for dogs who don't do 'ordinary.' 30-day guarantee.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+/* ============================================
+   K9NOVA — DESIGN TOKENS
+   ============================================ */
+:root{
+  --black:        #0E0F0D;
+  --black-soft:   #15160F;
+  --panel:        #1A1C16;
+  --panel-line:   #2A2D22;
+  --olive:        #4A5238;
+  --olive-light:  #6E7A52;
+  --olive-pale:   #A8B08C;
+  --bone:         #F5F3ED;
+  --bone-dim:     #C9C7BC;
+  --orange:       #C9602C;
+  --orange-light: #E0793F;
+
+  --font-display: 'Syne', sans-serif;
+  --font-body: 'Inter', sans-serif;
+
+  --radius-s: 8px;
+  --radius-m: 14px;
+  --radius-l: 24px;
+  --container: 1240px;
+
+  --shadow-soft: 0 20px 60px -20px rgba(0,0,0,0.5);
+  --shadow-deep: 0 30px 80px -30px rgba(0,0,0,0.7);
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+@media (prefers-reduced-motion: reduce){
+  html{scroll-behavior:auto;}
+  *{animation-duration:0.01ms !important; transition-duration:0.01ms !important;}
+}
+
+body{
+  font-family:var(--font-body);
+  background:var(--black);
+  color:var(--bone);
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+
+img{max-width:100%;display:block;}
+a{color:inherit;text-decoration:none;}
+button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit;}
+ul{list-style:none;}
+
+.wrap{max-width:var(--container);margin:0 auto;padding:0 32px;}
+.eyebrow{
+  font-family:var(--font-body);
+  font-size:12px;
+  font-weight:600;
+  letter-spacing:0.18em;
+  text-transform:uppercase;
+  color:var(--olive-pale);
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+.eyebrow::before{
+  content:'';
+  width:18px;height:1px;
+  background:var(--orange);
+  display:inline-block;
+}
+h1,h2,h3,h4{font-family:var(--font-display);font-weight:700;letter-spacing:-0.01em;}
+:focus-visible{outline:2px solid var(--orange);outline-offset:3px;}
+
+/* contour-line signature texture, used behind section transitions */
+.contour{
+  position:absolute; inset:0;
+  pointer-events:none;
+  opacity:0.06;
+  background-image:
+    repeating-radial-gradient(circle at 80% 20%, transparent 0, transparent 60px, var(--olive-pale) 61px, transparent 62px);
+}
+
+/* ============================================
+   NAV
+   ============================================ */
+.nav{
+  position:fixed; top:0; left:0; right:0;
+  z-index:1000;
+  padding:20px 0;
+  transition:background 0.4s var(--ease), padding 0.4s var(--ease), border-color 0.4s var(--ease);
+  border-bottom:1px solid transparent;
+}
+.nav.scrolled{
+  background:rgba(14,15,13,0.78);
+  backdrop-filter:blur(16px) saturate(140%);
+  -webkit-backdrop-filter:blur(16px) saturate(140%);
+  padding:14px 0;
+  border-bottom-color:rgba(255,255,255,0.06);
+}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;}
+.logo{
+  font-family:var(--font-display);
+  font-size:22px;
+  font-weight:800;
+  letter-spacing:0.01em;
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
+.logo .dot{color:var(--orange);}
+.nav-links{display:flex;gap:36px;align-items:center;}
+.nav-links a{
+  font-size:14px; font-weight:500;
+  color:var(--bone-dim);
+  position:relative;
+  transition:color 0.25s;
+}
+.nav-links a::after{
+  content:'';position:absolute;left:0;bottom:-6px;width:0;height:1px;
+  background:var(--orange); transition:width 0.3s var(--ease);
+}
+.nav-links a:hover{color:var(--bone);}
+.nav-links a:hover::after{width:100%;}
+.nav-cta{
+  background:var(--bone); color:var(--black);
+  padding:11px 22px; border-radius:100px;
+  font-size:13px; font-weight:700;
+  letter-spacing:0.02em;
+  transition:transform 0.3s var(--ease), background 0.3s;
+}
+.nav-cta:hover{background:var(--orange); color:var(--bone); transform:translateY(-2px);}
+.nav-toggle{display:none;width:26px;height:20px;position:relative;}
+.nav-toggle span{position:absolute;left:0;right:0;height:2px;background:var(--bone);transition:0.3s;}
+.nav-toggle span:nth-child(1){top:0;}
+.nav-toggle span:nth-child(2){top:9px;}
+.nav-toggle span:nth-child(3){top:18px;}
+.nav-toggle.open span:nth-child(1){transform:translateY(9px) rotate(45deg);}
+.nav-toggle.open span:nth-child(2){opacity:0;}
+.nav-toggle.open span:nth-child(3){transform:translateY(-9px) rotate(-45deg);}
+
+.mobile-menu{
+  position:fixed; inset:0; z-index:999;
+  background:var(--black); 
+  display:flex; flex-direction:column;
+  justify-content:center; align-items:center;
+  gap:28px;
+  transform:translateY(-100%);
+  transition:transform 0.45s var(--ease);
+}
+.mobile-menu.open{transform:translateY(0);}
+.mobile-menu a{font-family:var(--font-display);font-size:28px;font-weight:700;}
+
+/* ============================================
+   HERO SLIDER
+   ============================================ */
+.hero{
+  position:relative;
+  height:100vh;
+  min-height:680px;
+  overflow:hidden;
+  background:var(--black);
+}
+.hero-slides{position:absolute;inset:0;}
+.hero-slide{
+  position:absolute; inset:0;
+  opacity:0;
+  transition:opacity 1.6s ease;
+}
+.hero-slide.active{opacity:1;}
+.hero-slide img{
+  width:100%; height:100%; object-fit:cover;
+  object-position:center 30%;
+  transform:scale(1.06);
+  transition:transform 8s linear;
+}
+.hero-slide.active img{transform:scale(1);}
+.hero-overlay{
+  position:absolute; inset:0;
+  background:
+    linear-gradient(180deg, rgba(14,15,13,0.55) 0%, rgba(14,15,13,0.25) 35%, rgba(14,15,13,0.85) 100%),
+    linear-gradient(90deg, rgba(14,15,13,0.6) 0%, rgba(14,15,13,0.1) 55%);
+}
+.hero-content{
+  position:relative; z-index:5;
+  height:100%;
+  display:flex; flex-direction:column;
+  justify-content:center;
+  padding:0 32px;
+  max-width:var(--container);
+  margin:0 auto;
+}
+.hero-tag{
+  display:inline-flex; align-items:center; gap:10px;
+  background:rgba(245,243,237,0.08);
+  border:1px solid rgba(245,243,237,0.18);
+  backdrop-filter:blur(8px);
+  padding:8px 16px; border-radius:100px;
+  font-size:12px; font-weight:600; letter-spacing:0.1em; text-transform:uppercase;
+  color:var(--olive-pale);
+  margin-bottom:28px;
+  width:fit-content;
+}
+.hero-tag span.live{width:6px;height:6px;border-radius:50%;background:var(--orange);display:inline-block;}
+.hero-title{
+  font-size:clamp(42px, 7vw, 88px);
+  line-height:0.98;
+  max-width:780px;
+  margin-bottom:22px;
+  color:var(--bone);
+}
+.hero-title em{
+  font-style:normal; color:var(--orange-light);
+}
+.hero-sub{
+  font-size:17px;
+  color:var(--bone-dim);
+  max-width:460px;
+  margin-bottom:40px;
+  font-weight:400;
+}
+.hero-actions{display:flex; gap:16px; align-items:center; flex-wrap:wrap;}
+.btn{
+  display:inline-flex; align-items:center; justify-content:center; gap:10px;
+  padding:17px 34px;
+  border-radius:100px;
+  font-size:14px; font-weight:700;
+  letter-spacing:0.02em;
+  transition:transform 0.35s var(--ease), box-shadow 0.35s var(--ease), background 0.3s;
+  white-space:nowrap;
+}
+.btn-primary{
+  background:var(--orange); color:var(--bone);
+  box-shadow:0 16px 40px -10px rgba(201,96,44,0.55);
+}
+.btn-primary:hover{transform:translateY(-3px); box-shadow:0 22px 50px -10px rgba(201,96,44,0.7);}
+.btn-ghost{
+  background:rgba(245,243,237,0.08);
+  border:1px solid rgba(245,243,237,0.25);
+  color:var(--bone);
+  backdrop-filter:blur(8px);
+}
+.btn-ghost:hover{background:rgba(245,243,237,0.16); transform:translateY(-3px);}
+.btn-dark{
+  background:var(--black); color:var(--bone);
+}
+.btn-dark:hover{background:var(--olive); transform:translateY(-3px);}
+.btn-block{width:100%;}
+
+.hero-dots{
+  position:absolute; bottom:120px; left:50%; 
+  transform:translateX(-50%);
+  z-index:5;
+  display:flex; gap:10px;
+}
+.hero-dot{
+  width:34px; height:3px; border-radius:2px;
+  background:rgba(245,243,237,0.25);
+  overflow:hidden; position:relative;
+  transition:background 0.3s;
+}
+.hero-dot::after{
+  content:''; position:absolute; inset:0;
+  background:var(--orange);
+  transform:scaleX(0); transform-origin:left;
+}
+.hero-dot.active::after{
+  animation:fillDot 6s linear forwards;
+}
+@keyframes fillDot{from{transform:scaleX(0);} to{transform:scaleX(1);}}
+
+.scroll-indicator{
+  position:absolute; bottom:40px; left:50%; transform:translateX(-50%);
+  z-index:5;
+  display:flex; flex-direction:column; align-items:center; gap:10px;
+  color:var(--bone-dim);
+  font-size:11px; letter-spacing:0.15em; text-transform:uppercase;
+}
+.scroll-indicator .line{
+  width:1px; height:36px;
+  background:linear-gradient(180deg, var(--orange), transparent);
+  animation:scrollPulse 2s ease-in-out infinite;
+}
+@keyframes scrollPulse{0%,100%{opacity:0.3;}50%{opacity:1;}}
+
+/* ============================================
+   MARQUEE STRIP
+   ============================================ */
+.marquee-strip{
+  background:var(--olive);
+  padding:14px 0;
+  overflow:hidden;
+  position:relative;
+  border-top:1px solid rgba(0,0,0,0.15);
+  border-bottom:1px solid rgba(0,0,0,0.15);
+}
+.marquee-track{
+  display:flex; gap:60px;
+  white-space:nowrap;
+  animation:scrollMarquee 28s linear infinite;
+  width:max-content;
+}
+@keyframes scrollMarquee{from{transform:translateX(0);} to{transform:translateX(-50%);}}
+.marquee-track span{
+  font-family:var(--font-display); font-weight:700;
+  font-size:14px; letter-spacing:0.04em; text-transform:uppercase;
+  color:var(--bone); display:flex; align-items:center; gap:14px;
+}
+.marquee-track span::after{content:'✦'; color:var(--orange-light); font-size:11px;}
+
+/* ============================================
+   SECTION GENERIC
+   ============================================ */
+section{position:relative;}
+.section-pad{padding:120px 0;}
+.section-head{
+  max-width:640px;
+  margin-bottom:64px;
+}
+.section-head h2{
+  font-size:clamp(32px, 4.2vw, 52px);
+  margin-top:18px;
+  color:var(--bone);
+  line-height:1.05;
+}
+.section-head p{
+  margin-top:18px;
+  color:var(--bone-dim);
+  font-size:16px;
+  max-width:520px;
+}
+.center{text-align:center; margin-left:auto; margin-right:auto;}
+
+/* ============================================
+   PRODUCT SECTION
+   ============================================ */
+.product-section{
+  padding:140px 0 100px;
+  background:var(--black-soft);
+}
+.product-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:72px;
+  align-items:start;
+}
+.gallery-main{
+  position:relative;
+  border-radius:var(--radius-l);
+  overflow:hidden;
+  background:var(--panel);
+  aspect-ratio:1/1;
+  box-shadow:var(--shadow-deep);
+  cursor:zoom-in;
+}
+.gallery-main img{
+  width:100%; height:100%; object-fit:cover;
+  transition:transform 0.5s var(--ease);
+}
+.gallery-main:hover img{transform:scale(1.12);}
+.gallery-badge{
+  position:absolute; top:20px; left:20px;
+  background:rgba(14,15,13,0.7);
+  backdrop-filter:blur(10px);
+  border:1px solid rgba(245,243,237,0.15);
+  padding:8px 16px; border-radius:100px;
+  font-size:11px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase;
+  color:var(--orange-light);
+  z-index:2;
+}
+.gallery-thumbs{
+  display:grid; grid-template-columns:repeat(6,1fr);
+  gap:12px; margin-top:16px;
+}
+.thumb{
+  border-radius:var(--radius-s);
+  overflow:hidden; aspect-ratio:1/1;
+  border:2px solid transparent;
+  opacity:0.55;
+  transition:opacity 0.3s, border-color 0.3s, transform 0.3s;
+}
+.thumb img{width:100%;height:100%;object-fit:cover;}
+.thumb:hover{opacity:0.85; transform:translateY(-2px);}
+.thumb.active{opacity:1; border-color:var(--orange);}
+
+.product-info{padding-top:8px;}
+.rating-row{
+  display:flex; align-items:center; gap:12px;
+  margin-bottom:20px;
+}
+.stars{color:var(--orange-light); font-size:17px; letter-spacing:2px;}
+.rating-num{font-weight:700; color:var(--bone);}
+.review-link{color:var(--bone-dim); font-size:13px; border-bottom:1px solid var(--panel-line);}
+.product-title{
+  font-size:clamp(30px, 3.4vw, 42px);
+  color:var(--bone);
+  margin-bottom:14px;
+  line-height:1.08;
+}
+.product-tagline{
+  color:var(--bone-dim); font-size:16px; margin-bottom:28px; max-width:460px;
+}
+.price-row{
+  display:flex; align-items:baseline; gap:14px;
+  margin-bottom:8px;
+}
+.price-now{font-family:var(--font-display); font-size:38px; font-weight:800; color:var(--bone);}
+.price-was{font-size:18px; color:var(--bone-dim); text-decoration:line-through; opacity:0.6;}
+.price-save{
+  background:rgba(201,96,44,0.16); color:var(--orange-light);
+  font-size:12px; font-weight:700; padding:5px 12px; border-radius:100px;
+  letter-spacing:0.03em;
+}
+.price-note{font-size:13px; color:var(--olive-pale); margin-bottom:32px;}
+
+.option-block{margin-bottom:28px;}
+.option-label{
+  display:flex; justify-content:space-between; align-items:baseline;
+  font-size:13px; font-weight:700; letter-spacing:0.05em; text-transform:uppercase;
+  color:var(--bone); margin-bottom:14px;
+}
+.option-label .sel-value{color:var(--olive-pale); font-weight:500; text-transform:none; letter-spacing:0;}
+
+.color-options{display:flex; gap:12px;}
+.color-swatch{
+  width:44px; height:44px; border-radius:50%;
+  border:2px solid transparent;
+  position:relative;
+  cursor:pointer;
+  display:flex; align-items:center; justify-content:center;
+  transition:transform 0.25s, border-color 0.25s;
+}
+.color-swatch::before{
+  content:''; width:32px; height:32px; border-radius:50%;
+}
+.color-swatch[data-color="olive"]::before{background:#5C6644;}
+.color-swatch[data-color="black"]::before{background:#181a14;}
+.color-swatch[data-color="sand"]::before{background:#A89368;}
+.color-swatch:hover{transform:translateY(-2px);}
+.color-swatch.active{border-color:var(--orange);}
+
+.size-options{display:flex; gap:10px; flex-wrap:wrap;}
+.size-pill{
+  padding:12px 0; width:64px; text-align:center;
+  border:1px solid var(--panel-line);
+  border-radius:var(--radius-s);
+  font-size:13px; font-weight:600;
+  color:var(--bone-dim);
+  transition:all 0.25s;
+}
+.size-pill:hover{border-color:var(--olive-light); color:var(--bone);}
+.size-pill.active{background:var(--bone); color:var(--black); border-color:var(--bone);}
+.size-hint{font-size:12px; color:var(--bone-dim); margin-top:10px;}
+.size-hint a{color:var(--orange-light); border-bottom:1px solid rgba(224,121,63,0.4);}
+
+.qty-row{display:flex; align-items:center; gap:18px; margin-bottom:32px;}
+.qty-control{
+  display:flex; align-items:center;
+  border:1px solid var(--panel-line); border-radius:100px;
+  overflow:hidden;
+}
+.qty-control button{
+  width:42px; height:42px; font-size:18px; color:var(--bone);
+  transition:background 0.2s;
+}
+.qty-control button:hover{background:var(--panel);}
+.qty-control input{
+  width:40px; text-align:center; background:none; color:var(--bone);
+  font-weight:700; font-size:15px; border:none;
+}
+.stock-note{font-size:13px; color:var(--olive-pale); display:flex; align-items:center; gap:8px;}
+.stock-note .pulse{width:7px;height:7px;border-radius:50%;background:#7FBF6B; box-shadow:0 0 0 3px rgba(127,191,107,0.2);}
+
+.cta-row{display:flex; flex-direction:column; gap:12px; margin-bottom:32px;}
+
+.badges-row{
+  display:grid; grid-template-columns:repeat(3,1fr); gap:14px;
+  padding-top:28px; border-top:1px solid var(--panel-line);
+}
+.badge-item{display:flex; flex-direction:column; align-items:center; gap:8px; text-align:center;}
+.badge-item .icon{
+  width:42px; height:42px; border-radius:50%;
+  background:var(--panel); border:1px solid var(--panel-line);
+  display:flex; align-items:center; justify-content:center;
+}
+.badge-item .icon svg{width:19px;height:19px; stroke:var(--olive-pale);}
+.badge-item span{font-size:11.5px; color:var(--bone-dim); line-height:1.3;}
+
+.secure-row{
+  display:flex; align-items:center; justify-content:center; gap:10px;
+  margin-top:22px; font-size:12px; color:var(--bone-dim);
+}
+.secure-row svg{width:14px;height:14px;stroke:var(--olive-pale);}
+
+/* ============================================
+   DESCRIPTION
+   ============================================ */
+.desc-section{background:var(--black); padding:100px 0;}
+.desc-grid{display:grid; grid-template-columns:0.85fr 1.15fr; gap:80px; align-items:center;}
+.desc-copy p{color:var(--bone-dim); font-size:16.5px; margin-bottom:20px;}
+.desc-copy p:first-of-type{font-size:19px; color:var(--bone); font-weight:500;}
+.spec-list{margin-top:32px; display:grid; gap:0;}
+.spec-row{
+  display:flex; justify-content:space-between;
+  padding:16px 0; border-bottom:1px solid var(--panel-line);
+  font-size:14px;
+}
+.spec-row .k{color:var(--bone-dim);}
+.spec-row .v{color:var(--bone); font-weight:600; text-align:right;}
+.desc-visual{
+  position:relative; border-radius:var(--radius-l); overflow:hidden;
+  aspect-ratio:4/5; box-shadow:var(--shadow-deep);
+}
+.desc-visual img{width:100%; height:100%; object-fit:cover;}
+.desc-visual .tag{
+  position:absolute; bottom:24px; left:24px; right:24px;
+  background:rgba(14,15,13,0.55); backdrop-filter:blur(12px);
+  border:1px solid rgba(245,243,237,0.12);
+  border-radius:var(--radius-m); padding:18px 22px;
+}
+.desc-visual .tag .label{font-size:11px; letter-spacing:0.1em; text-transform:uppercase; color:var(--orange-light); font-weight:700; margin-bottom:4px;}
+.desc-visual .tag .text{font-size:14px; color:var(--bone); font-weight:500;}
+
+/* ============================================
+   FEATURE BLOCKS
+   ============================================ */
+.feature-block{
+  padding:100px 0;
+  position:relative;
+  overflow:hidden;
+}
+.feature-block:nth-child(even){background:var(--black-soft);}
+.feature-grid{
+  display:grid; grid-template-columns:1fr 1fr;
+  gap:80px; align-items:center;
+}
+.feature-block.reverse .feature-grid{direction:rtl;}
+.feature-block.reverse .feature-grid > *{direction:ltr;}
+.feature-visual{
+  position:relative; border-radius:var(--radius-l); overflow:hidden;
+  aspect-ratio:1/1; box-shadow:var(--shadow-soft);
+}
+.feature-visual img{width:100%; height:100%; object-fit:cover; transition:transform 0.6s var(--ease);}
+.feature-visual:hover img{transform:scale(1.06);}
+.feature-tag-code{
+  position:absolute; top:18px; left:18px;
+  font-family:var(--font-body); font-size:11px; font-weight:700;
+  letter-spacing:0.1em; text-transform:uppercase;
+  color:var(--bone); background:rgba(74,82,56,0.85);
+  backdrop-filter:blur(6px);
+  padding:7px 14px; border-radius:6px;
+  border:1px solid rgba(245,243,237,0.15);
+}
+.feature-copy h3{
+  font-size:clamp(26px, 3vw, 36px); color:var(--bone); margin:16px 0 18px; line-height:1.1;
+}
+.feature-copy p{color:var(--bone-dim); font-size:16px; margin-bottom:22px; max-width:440px;}
+.feature-points{display:grid; gap:12px;}
+.feature-points li{
+  display:flex; align-items:flex-start; gap:12px;
+  font-size:14.5px; color:var(--bone-dim);
+}
+.feature-points li svg{
+  flex-shrink:0; width:18px; height:18px; stroke:var(--orange-light); margin-top:2px;
+}
+
+/* ============================================
+   COMPARISON
+   ============================================ */
+.compare-section{padding:120px 0; background:var(--black);}
+.compare-table-wrap{
+  border-radius:var(--radius-l); overflow:hidden;
+  border:1px solid var(--panel-line);
+  background:var(--panel);
+}
+.compare-table{width:100%; border-collapse:collapse;}
+.compare-table th{
+  padding:28px 28px; text-align:center;
+  font-family:var(--font-display); font-size:18px;
+  border-bottom:1px solid var(--panel-line);
+}
+.compare-table th:first-child{text-align:left; font-family:var(--font-body); font-size:13px; font-weight:600; color:var(--bone-dim); text-transform:uppercase; letter-spacing:0.05em;}
+.compare-table th.k9-col{background:rgba(201,96,44,0.1); color:var(--orange-light);}
+.compare-table th.ord-col{color:var(--bone-dim);}
+.compare-table td{
+  padding:20px 28px; text-align:center; font-size:14.5px;
+  border-bottom:1px solid var(--panel-line); color:var(--bone-dim);
+}
+.compare-table td:first-child{text-align:left; color:var(--bone); font-weight:500;}
+.compare-table tr:last-child td{border-bottom:none;}
+.compare-table td.k9-col{background:rgba(201,96,44,0.06); color:var(--bone); font-weight:600;}
+.check{color:#7FBF6B; font-size:17px;}
+.cross{color:#B85C5C; font-size:17px;}
+
+/* ============================================
+   GALLERY MASONRY
+   ============================================ */
+.lifestyle-section{padding:120px 0; background:var(--black-soft);}
+.masonry{
+  display:grid; grid-template-columns:repeat(4, 1fr);
+  grid-auto-rows:14px;
+  gap:18px;
+}
+.masonry-item{
+  position:relative; border-radius:var(--radius-m); overflow:hidden;
+  cursor:pointer;
+}
+.masonry-item img{
+  width:100%; height:100%; object-fit:cover;
+  transition:transform 0.6s var(--ease), filter 0.5s;
+}
+.masonry-item:hover img{transform:scale(1.08);}
+.masonry-item .ov{
+  position:absolute; inset:0;
+  background:linear-gradient(180deg, transparent 50%, rgba(14,15,13,0.85) 100%);
+  opacity:0; transition:opacity 0.4s;
+  display:flex; align-items:flex-end; padding:20px;
+}
+.masonry-item:hover .ov{opacity:1;}
+.masonry-item .ov span{
+  color:var(--bone); font-size:13px; font-weight:600;
+  display:flex; align-items:center; gap:8px;
+}
+.masonry-item:nth-child(1){grid-row:span 24;}
+.masonry-item:nth-child(2){grid-row:span 18;}
+.masonry-item:nth-child(3){grid-row:span 18;}
+.masonry-item:nth-child(4){grid-row:span 24;}
+.masonry-item:nth-child(5){grid-row:span 18;}
+.masonry-item:nth-child(6){grid-row:span 18;}
+
+/* ============================================
+   REVIEWS
+   ============================================ */
+.reviews-section{padding:120px 0; background:var(--black);}
+.reviews-summary{
+  display:flex; align-items:center; gap:32px; margin-bottom:56px;
+  flex-wrap:wrap;
+}
+.score-big{font-family:var(--font-display); font-size:64px; font-weight:800; color:var(--bone); line-height:1;}
+.score-meta{display:flex; flex-direction:column; gap:4px;}
+.score-meta .stars{font-size:20px;}
+.score-meta .count{font-size:13px; color:var(--bone-dim);}
+.reviews-grid{
+  display:grid; grid-template-columns:repeat(3, 1fr); gap:24px;
+}
+.review-card{
+  background:var(--panel); border:1px solid var(--panel-line);
+  border-radius:var(--radius-l); padding:28px;
+  transition:transform 0.35s var(--ease), border-color 0.35s;
+}
+.review-card:hover{transform:translateY(-6px); border-color:var(--olive-light);}
+.review-top{display:flex; align-items:center; gap:14px; margin-bottom:16px;}
+.avatar{
+  width:46px; height:46px; border-radius:50%;
+  background:var(--olive); display:flex; align-items:center; justify-content:center;
+  font-family:var(--font-display); font-weight:700; color:var(--bone); font-size:16px;
+  flex-shrink:0;
+}
+.review-name{display:flex; flex-direction:column;}
+.review-name .name{font-weight:700; font-size:14.5px; color:var(--bone); display:flex; align-items:center; gap:6px;}
+.verified{
+  font-size:10.5px; color:#7FBF6B; background:rgba(127,191,107,0.12);
+  padding:2px 8px; border-radius:100px; font-weight:600;
+}
+.review-name .dog{font-size:12.5px; color:var(--olive-pale);}
+.review-card .stars{font-size:14px; margin-bottom:12px; display:block;}
+.review-card p{font-size:14.5px; color:var(--bone-dim); line-height:1.65;}
+.review-card .rdate{margin-top:16px; font-size:12px; color:var(--bone-dim); opacity:0.6;}
+
+/* ============================================
+   FAQ
+   ============================================ */
+.faq-section{padding:120px 0; background:var(--black-soft);}
+.faq-list{max-width:760px;}
+.faq-item{
+  border-bottom:1px solid var(--panel-line);
+}
+.faq-q{
+  width:100%; display:flex; justify-content:space-between; align-items:center;
+  padding:26px 4px; text-align:left;
+  font-family:var(--font-display); font-size:17px; font-weight:600; color:var(--bone);
+}
+.faq-q .plus{
+  width:28px; height:28px; border-radius:50%;
+  border:1px solid var(--panel-line);
+  display:flex; align-items:center; justify-content:center;
+  position:relative; flex-shrink:0; margin-left:20px;
+  transition:transform 0.4s var(--ease), background 0.3s;
+}
+.faq-q .plus::before, .faq-q .plus::after{
+  content:''; position:absolute; background:var(--bone);
+  transition:transform 0.3s;
+}
+.faq-q .plus::before{width:10px; height:1.5px;}
+.faq-q .plus::after{width:1.5px; height:10px;}
+.faq-item.open .faq-q .plus{background:var(--orange); border-color:var(--orange);}
+.faq-item.open .faq-q .plus::after{transform:scaleY(0);}
+.faq-a{
+  max-height:0; overflow:hidden;
+  transition:max-height 0.4s var(--ease);
+}
+.faq-a p{padding:0 4px 26px; color:var(--bone-dim); font-size:15px; max-width:640px;}
+
+/* ============================================
+   BRAND STORY
+   ============================================ */
+.story-section{
+  padding:140px 0;
+  background:var(--olive);
+  position:relative;
+  overflow:hidden;
+}
+.story-section .contour{opacity:0.1;}
+.story-inner{max-width:780px; position:relative; z-index:2;}
+.story-inner .eyebrow{color:rgba(245,243,237,0.7);}
+.story-inner .eyebrow::before{background:var(--bone);}
+.story-inner h2{
+  font-size:clamp(32px, 4.5vw, 50px); color:var(--bone); margin:20px 0 28px; line-height:1.08;
+}
+.story-inner p{font-size:17px; color:rgba(245,243,237,0.85); margin-bottom:20px; max-width:680px;}
+.story-sig{
+  margin-top:40px; font-family:var(--font-display); font-size:18px; color:var(--bone);
+  display:flex; align-items:center; gap:14px;
+}
+.story-sig::before{content:''; width:40px; height:1px; background:rgba(245,243,237,0.5);}
+
+/* ============================================
+   TRUST GRID
+   ============================================ */
+.trust-section{padding:100px 0; background:var(--black);}
+.trust-grid{
+  display:grid; grid-template-columns:repeat(6, 1fr); gap:1px;
+  background:var(--panel-line); border-radius:var(--radius-l); overflow:hidden;
+}
+.trust-item{
+  background:var(--black-soft);
+  padding:36px 22px; text-align:center;
+  display:flex; flex-direction:column; align-items:center; gap:14px;
+  transition:background 0.3s;
+}
+.trust-item:hover{background:var(--panel);}
+.trust-item .icon{
+  width:48px; height:48px; border-radius:50%;
+  background:rgba(201,96,44,0.1);
+  display:flex; align-items:center; justify-content:center;
+}
+.trust-item .icon svg{width:21px; height:21px; stroke:var(--orange-light);}
+.trust-item span{font-size:13px; color:var(--bone-dim); font-weight:500; line-height:1.4;}
+
+/* ============================================
+   STICKY ADD TO CART
+   ============================================ */
+.sticky-bar{
+  position:fixed; bottom:0; left:0; right:0; z-index:900;
+  background:rgba(14,15,13,0.92);
+  backdrop-filter:blur(16px) saturate(140%);
+  border-top:1px solid var(--panel-line);
+  transform:translateY(100%);
+  transition:transform 0.45s var(--ease);
+  padding:14px 0;
+}
+.sticky-bar.show{transform:translateY(0);}
+.sticky-inner{
+  display:flex; align-items:center; justify-content:space-between; gap:24px;
+}
+.sticky-left{display:flex; align-items:center; gap:16px;}
+.sticky-left img{width:50px; height:50px; border-radius:10px; object-fit:cover;}
+.sticky-title{font-size:14px; font-weight:700; color:var(--bone);}
+.sticky-price{font-size:13px; color:var(--olive-pale);}
+.sticky-right{display:flex; align-items:center; gap:14px;}
+.sticky-right .btn{padding:13px 28px; font-size:13px;}
+
+/* ============================================
+   FOOTER
+   ============================================ */
+footer{background:var(--black-soft); padding:90px 0 0; border-top:1px solid var(--panel-line);}
+.footer-grid{
+  display:grid; grid-template-columns:1.6fr 1fr 1fr 1fr 1.4fr;
+  gap:48px; padding-bottom:70px;
+}
+.footer-brand .logo{margin-bottom:18px;}
+.footer-brand p{color:var(--bone-dim); font-size:14px; max-width:280px; margin-bottom:24px;}
+.social-row{display:flex; gap:12px;}
+.social-row a{
+  width:38px; height:38px; border-radius:50%;
+  border:1px solid var(--panel-line);
+  display:flex; align-items:center; justify-content:center;
+  transition:background 0.3s, border-color 0.3s;
+}
+.social-row a:hover{background:var(--orange); border-color:var(--orange);}
+.social-row svg{width:16px; height:16px; stroke:var(--bone);}
+.footer-col h4{font-size:13px; letter-spacing:0.06em; text-transform:uppercase; color:var(--bone); margin-bottom:20px; font-weight:700;}
+.footer-col ul{display:grid; gap:12px;}
+.footer-col a{font-size:14px; color:var(--bone-dim); transition:color 0.25s;}
+.footer-col a:hover{color:var(--orange-light);}
+.newsletter p{font-size:14px; color:var(--bone-dim); margin-bottom:18px;}
+.newsletter-form{display:flex; gap:8px;}
+.newsletter-form input{
+  flex:1; background:var(--panel); border:1px solid var(--panel-line);
+  border-radius:100px; padding:13px 18px; color:var(--bone); font-size:13px;
+}
+.newsletter-form input::placeholder{color:var(--bone-dim);}
+.newsletter-form button{
+  background:var(--bone); color:var(--black); border-radius:50%;
+  width:44px; height:44px; flex-shrink:0; display:flex; align-items:center; justify-content:center;
+  transition:background 0.3s;
+}
+.newsletter-form button:hover{background:var(--orange); color:var(--bone);}
+.newsletter-form button svg{width:16px;height:16px;}
+.footer-bottom{
+  border-top:1px solid var(--panel-line);
+  padding:26px 0;
+  display:flex; justify-content:space-between; align-items:center;
+  font-size:13px; color:var(--bone-dim);
+  flex-wrap:wrap; gap:12px;
+}
+.footer-pay{display:flex; gap:10px; align-items:center; opacity:0.7;}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+@media (max-width: 980px){
+  .nav-links{display:none;}
+  .nav-toggle{display:block;}
+  .nav-cta{display:none;}
+  .product-grid{grid-template-columns:1fr; gap:48px;}
+  .desc-grid{grid-template-columns:1fr; gap:48px;}
+  .desc-grid{direction:ltr;}
+  .feature-grid{grid-template-columns:1fr; gap:36px;}
+  .feature-block.reverse .feature-grid{direction:ltr;}
+  .feature-block.reverse .feature-visual{order:0;}
+  .reviews-grid{grid-template-columns:1fr 1fr;}
+  .footer-grid{grid-template-columns:1fr 1fr; gap:40px;}
+  .trust-grid{grid-template-columns:repeat(3,1fr);}
+  .masonry{grid-template-columns:repeat(2,1fr);}
+  .compare-table th, .compare-table td{padding:16px 14px; font-size:13px;}
+}
+@media (max-width: 640px){
+  .wrap{padding:0 20px;}
+  .section-pad{padding:80px 0;}
+  .hero-title{font-size:clamp(34px,10vw,52px);}
+  .hero-actions{flex-direction:column; align-items:stretch;}
+  .hero-dots{bottom:150px;}
+  .gallery-thumbs{grid-template-columns:repeat(6,1fr); gap:8px;}
+  .reviews-grid{grid-template-columns:1fr;}
+  .footer-grid{grid-template-columns:1fr; gap:36px; padding-bottom:48px;}
+  .trust-grid{grid-template-columns:repeat(2,1fr);}
+  .sticky-left img{display:none;}
+  .sticky-title{display:none;}
+  .badges-row{grid-template-columns:repeat(3,1fr); gap:8px;}
+  .badge-item span{font-size:10px;}
+  .product-section{padding:100px 0 70px;}
+}
+</style>
+</head>
+<body>
+
+<!-- ============ NAV ============ -->
+<nav class="nav" id="mainNav">
+  <div class="wrap nav-inner">
+    <a href="#" class="logo">K9NOVA<span class="dot">™</span></a>
+    <div class="nav-links">
+      <a href="#product">Harness</a>
+      <a href="#features">Features</a>
+      <a href="#reviews">Reviews</a>
+      <a href="#faq">FAQ</a>
+      <a href="#story">Our Story</a>
+    </div>
+    <a href="#product" class="nav-cta">Shop Now</a>
+    <button class="nav-toggle" id="navToggle" aria-label="Open menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#product">Harness</a>
+  <a href="#features">Features</a>
+  <a href="#reviews">Reviews</a>
+  <a href="#faq">FAQ</a>
+  <a href="#story">Our Story</a>
+  <a href="#product" class="btn btn-primary" style="margin-top:20px;">Shop Now</a>
+</div>
+
+<!-- ============ HERO SLIDER ============ -->
+<header class="hero" id="hero">
+  <div class="hero-slides" id="heroSlides">
+    <div class="hero-slide active" data-img="images/1000226807.jpg">
+      <img src="images/1000226807.jpg" alt="Man hiking a mountain ridge at sunrise with his Belgian Malinois wearing the K9Nova tactical harness">
+    </div>
+    <div class="hero-slide" data-img="images/1000226782.jpg">
+      <img src="images/1000226782.jpg" alt="Belgian Malinois standing on a mountain summit at golden hour wearing the K9Nova harness with Do Not Pet patch">
+    </div>
+    <div class="hero-slide" data-img="images/1000226803.jpg">
+      <img src="images/1000226803.jpg" alt="Owner and his dog wearing K9Nova harness standing on the lawn of a luxury estate">
+    </div>
+    <div class="hero-slide" data-img="images/1000226805.jpg">
+      <img src="images/1000226805.jpg" alt="Man walking his dog on a driveway path while the dog wears the K9Nova tactical harness">
+    </div>
+    <div class="hero-slide" data-img="images/1000226806.jpg">
+      <img src="images/1000226806.jpg" alt="Man kneeling with his dog outside a modern home, adjusting the K9Nova harness">
+    </div>
+  </div>
+  <div class="hero-overlay"></div>
+
+  <div class="hero-content">
+    <div class="hero-tag"><span class="live"></span> Engineered for working dogs &amp; weekend hikers alike</div>
+    <h1 class="hero-title">Control that<br>feels like <em>trust.</em></h1>
+    <p class="hero-sub">The tactical no-pull harness built from mil-spec nylon, designed by trainers, and tested on trails most leashes never see.</p>
+    <div class="hero-actions">
+      <a href="#product" class="btn btn-primary">Shop K9Nova — $49.98</a>
+      <a href="#features" class="btn btn-ghost">See What Makes It Different</a>
+    </div>
+  </div>
+
+  <div class="hero-dots" id="heroDots"></div>
+
+  <div class="scroll-indicator">
+    <span>Scroll</span>
+    <div class="line"></div>
+  </div>
+</header>
+
+<!-- ============ MARQUEE ============ -->
+<div class="marquee-strip">
+  <div class="marquee-track">
+    <span>Mil-Spec 1680D Nylon</span>
+    <span>Zero-Pull Front Clip</span>
+    <span>Reflective Night Stitching</span>
+    <span>30-Day Guarantee</span>
+    <span>Built for Working Dogs</span>
+    <span>Mil-Spec 1680D Nylon</span>
+    <span>Zero-Pull Front Clip</span>
+    <span>Reflective Night Stitching</span>
+    <span>30-Day Guarantee</span>
+    <span>Built for Working Dogs</span>
+  </div>
+</div>
+
+<!-- ============ PRODUCT SECTION ============ -->
+<section class="product-section" id="product">
+  <div class="wrap">
+    <div class="product-grid">
+
+      <!-- Gallery -->
+      <div class="gallery">
+        <div class="gallery-main" id="galleryMain">
+          <span class="gallery-badge">Olive — Field</span>
+          <img id="galleryMainImg" src="images/1000226805.jpg" alt="K9Nova tactical harness on dog, side profile">
+        </div>
+        <div class="gallery-thumbs" id="galleryThumbs">
+          <div class="thumb active" data-img="images/1000226805.jpg" data-badge="Olive — Field"><img src="images/1000226805.jpg" alt="Harness thumbnail 1"></div>
+          <div class="thumb" data-img="images/1000226804.jpg" data-badge="Indoor Fit Check"><img src="images/1000226804.jpg" alt="Harness thumbnail 2"></div>
+          <div class="thumb" data-img="images/1000226806.jpg" data-badge="Handle Detail"><img src="images/1000226806.jpg" alt="Harness thumbnail 3"></div>
+          <div class="thumb" data-img="images/1000226782.jpg" data-badge="Trail Tested"><img src="images/1000226782.jpg" alt="Harness thumbnail 4"></div>
+          <div class="thumb" data-img="images/1000226807.jpg" data-badge="Summit Hike"><img src="images/1000226807.jpg" alt="Harness thumbnail 5"></div>
+          <div class="thumb" data-img="images/1000226803.jpg" data-badge="Everyday Carry"><img src="images/1000226803.jpg" alt="Harness thumbnail 6"></div>
+        </div>
+      </div>
+
+      <!-- Info -->
+      <div class="product-info">
+        <div class="rating-row">
+          <span class="stars">★★★★★</span>
+          <span class="rating-num">4.9</span>
+          <a href="#reviews" class="review-link">2,847 reviews</a>
+        </div>
+        <h2 class="product-title">K9Nova™ Tactical No-Pull Harness</h2>
+        <p class="product-tagline">Mil-spec nylon construction with a front-clip no-pull design, padded comfort core, and reflective stitching — built for dogs that don't do "ordinary walks."</p>
+
+        <div class="price-row">
+          <span class="price-now">$49.98</span>
+          <span class="price-was">$99.98</span>
+          <span class="price-save">Save 50%</span>
+        </div>
+        <p class="price-note">One-time price. No subscriptions. Free shipping included.</p>
+
+        <div class="option-block">
+          <div class="option-label">Color <span class="sel-value" id="colorLabel">Olive Drab</span></div>
+          <div class="color-options">
+            <button class="color-swatch active" data-color="olive" aria-label="Olive Drab"></button>
+            <button class="color-swatch" data-color="black" aria-label="Stealth Black"></button>
+            <button class="color-swatch" data-color="sand" aria-label="Desert Sand"></button>
+          </div>
+        </div>
+
+        <div class="option-block">
+          <div class="option-label">Size <span class="sel-value" id="sizeLabel">Medium · 18–26&quot; chest</span></div>
+          <div class="size-options">
+            <button class="size-pill" data-size="XS" data-desc="XS · 14–18&quot; chest">XS</button>
+            <button class="size-pill" data-size="S" data-desc="S · 16–22&quot; chest">S</button>
+            <button class="size-pill active" data-size="M" data-desc="Medium · 18–26&quot; chest">M</button>
+            <button class="size-pill" data-size="L" data-desc="L · 24–34&quot; chest">L</button>
+            <button class="size-pill" data-size="XL" data-desc="XL · 32–42&quot; chest">XL</button>
+          </div>
+          <p class="size-hint">Not sure? <a href="#">View the sizing guide →</a></p>
+        </div>
+
+        <div class="qty-row">
+          <div class="qty-control">
+            <button id="qtyMinus" aria-label="Decrease quantity">–</button>
+            <input type="text" id="qtyInput" value="1" readonly>
+            <button id="qtyPlus" aria-label="Increase quantity">+</button>
+          </div>
+          <div class="stock-note"><span class="pulse"></span> In stock — ships in 24 hours</div>
+        </div>
+
+        <div class="cta-row">
+          <button class="btn btn-primary btn-block" id="addToCartBtn">Add to Cart — $49.98</button>
+          <button class="btn btn-dark btn-block">Buy It Now</button>
+        </div>
+
+        <div class="badges-row">
+          <div class="badge-item">
+            <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.6"><path d="M3 8h13v8H3V8zm13 3h3l2 3v2h-5v-5z"/><circle cx="7" cy="18" r="1.6"/><circle cx="17" cy="18" r="1.6"/></svg></span>
+            <span>Free Shipping</span>
+          </div>
+          <div class="badge-item">
+            <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.6"><path d="M12 3l7 3v6c0 5-3 8-7 9-4-1-7-4-7-9V6l7-3z"/></svg></span>
+            <span>30-Day Guarantee</span>
+          </div>
+          <div class="badge-item">
+            <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.6"><rect x="4" y="11" width="16" height="9" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg></span>
+            <span>Secure Checkout</span>
+          </div>
+        </div>
+
+        <div class="secure-row">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6"><rect x="4" y="11" width="16" height="9" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>
+          Encrypted SSL checkout · Visa, Mastercard, PayPal, Shop Pay accepted
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ DESCRIPTION ============ -->
+<section class="desc-section">
+  <div class="wrap desc-grid">
+    <div class="desc-copy">
+      <div class="eyebrow">The Build</div>
+      <h2 style="font-size:clamp(28px,3.4vw,38px); color:var(--bone); margin:16px 0 24px; line-height:1.1;">Not a leash accessory.<br>A piece of working gear.</h2>
+      <p>K9Nova was built the way working-dog equipment is built — for load, for grip, and for the moments a soft-goods leash simply can't handle.</p>
+      <p>The shell is cut from 1680D ballistic nylon, the same weight class used in tactical packs, then backed with a breathable mesh core so it stays comfortable across a full day on trail. The front-clip design redirects forward pull at the chest instead of the throat, so a dog that lunges learns to walk beside you, not ahead of you.</p>
+      <p>Every stitch line is reflective. Every strap is rated. Every buckle is built to be opened with one hand in the rain.</p>
+      <div class="spec-list">
+        <div class="spec-row"><span class="k">Shell material</span><span class="v">1680D Ballistic Nylon</span></div>
+        <div class="spec-row"><span class="k">Lining</span><span class="v">Breathable Air-Mesh Padding</span></div>
+        <div class="spec-row"><span class="k">Pull control</span><span class="v">Front + Back Dual Clip</span></div>
+        <div class="spec-row"><span class="k">Handle</span><span class="v">Reinforced Top Grip</span></div>
+        <div class="spec-row"><span class="k">Visibility</span><span class="v">360° Reflective Trim</span></div>
+        <div class="spec-row"><span class="k">Sizes</span><span class="v">XS – XL</span></div>
+      </div>
+    </div>
+    <div class="desc-visual">
+      <img src="images/1000226804.jpg" alt="Man fitting the K9Nova harness on his dog inside a modern home with marble flooring">
+      <div class="tag">
+        <div class="label">Fit Detail</div>
+        <div class="text">Four-point adjustable straps mean one harness grows with your dog's frame — no awkward in-between sizing.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FEATURE BLOCKS ============ -->
+<div id="features">
+
+  <div class="feature-block">
+    <div class="wrap feature-grid">
+      <div class="feature-visual">
+        <span class="feature-tag-code">FIELD NOTE / NO-PULL</span>
+        <img src="images/1000226804.jpg" alt="Dog sitting calmly while wearing the K9Nova harness indoors">
+      </div>
+      <div class="feature-copy">
+        <div class="eyebrow">No-Pull Design</div>
+        <h3>Redirect the pull. Keep the bond.</h3>
+        <p>A front-mounted clip gently turns a lunging dog back toward you instead of fighting the leash — no choking, no yanking, just physics doing the training.</p>
+        <ul class="feature-points">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M5 13l4 4L19 7"/></svg> Dual front + back clip points</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M5 13l4 4L19 7"/></svg> Distributes pressure across chest, not throat</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M5 13l4 4L19 7"/></svg> Trainer-recommended for reactive leash pullers</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="feature-block reverse">
+    <div class="wrap feature-grid">
+      <div class="feature-visual">
+        <span class="feature-tag-code">FIELD NOTE / MATERIAL</span>
+        <img src="images/1000226782.jpg" alt="Belgian Malinois on a mountain ridge wearing the durable K9Nova harness">
+      </div>
+      <div class="feature-copy">
+        <div class="eyebrow">Military Grade Material</div>
+        <h3>Built from the same nylon as tactical packs.</h3>
+        <p>1680D ballistic-weave nylon resists tearing, abrasion, and water — the kind of shell that shrugs off brush, gravel, and a dog that doesn't know its own strength.</p>
+        <ul class="feature-points">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M5 13l4 4L19 7"/></svg> Tear and abrasion-resistant shell</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M5 13l4 4L19 7"/></svg> Water-resistant outer weave</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M5 13l4 4L19 7"/></svg> Reinforced stress points at every buckle</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="feature-block">
+    <div class="wrap feature-grid">
+      <div class="feature-visual">
+        <span class="feature-tag-code">FIELD NOTE / VISIBILITY</span>
+        <img src="images/1000226807.jpg" alt="Man hiking with his dog at sunrise wearing the K9Nova harness with reflective trim">
+      </div>
+      <div class="feature-copy">
+        <div class="eyebrow">Reflective Safety</div>
+        <h3>Seen long before headlights find you.</h3>
+        <p>360° reflective stitching catches light from every angle, turning early-morning and after-dark walks into something you don't have to think twice about.</p>
+        <ul class="feature-points">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M5 13l4 4L19 7"/></svg> Reflective trim on all four sides</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M5 13l4 4L19 7"/></svg> Visible from over 300 feet at night</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M5 13l4 4L19 7"/></svg> No batteries, no charging, always on</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="feature-block reverse">
+    <div class="wrap feature-grid">
+      <div class="feature-visual">
+        <span class="feature-tag-code">FIELD NOTE / HANDLE</span>
+        <img src="images/1000226806.jpg" alt="Man kneeling and holding the top handle of the K9Nova harness on his dog">
+      </div>
+      <div class="feature-copy">
+        <div class="eyebrow">Heavy-Duty Handle</div>
+        <h3>A grip for the moments that matter.</h3>
+        <p>The reinforced top handle gives you instant control at curbs, in crowds, or the second things get unpredictable — rated well beyond a casual tug.</p>
+        <ul class="feature-points">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M5 13l4 4L19 7"/></svg> Double-stitched, load-rated grip</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M5 13l4 4L19 7"/></svg> Instant control without touching the collar</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M5 13l4 4L19 7"/></svg> Ideal for service and working-dog handling</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="feature-block">
+    <div class="wrap feature-grid">
+      <div class="feature-visual">
+        <span class="feature-tag-code">FIELD NOTE / COMFORT</span>
+        <img src="images/1000226805.jpg" alt="Dog walking comfortably wearing the padded K9Nova harness on a driveway path">
+      </div>
+      <div class="feature-copy">
+        <div class="eyebrow">Comfortable Padding</div>
+        <h3>All-day wear, zero chafe.</h3>
+        <p>A breathable air-mesh core sits against the chest and belly, spreading pressure evenly so long walks — and long hikes — never turn into sore spots.</p>
+        <ul class="feature-points">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M5 13l4 4L19 7"/></svg> Breathable mesh lining</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M5 13l4 4L19 7"/></svg> No chest or armpit chafing</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M5 13l4 4L19 7"/></svg> Cool in summer, no fur matting</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="feature-block reverse">
+    <div class="wrap feature-grid">
+      <div class="feature-visual">
+        <span class="feature-tag-code">FIELD NOTE / ADVENTURE</span>
+        <img src="images/1000226803.jpg" alt="Owner and dog wearing the K9Nova harness standing in front of a large estate, ready for adventure">
+      </div>
+      <div class="feature-copy">
+        <div class="eyebrow">Adventure Ready</div>
+        <h3>From the front yard to the summit.</h3>
+        <p>Four-point adjustability means one harness moves with your dog through every season and every terrain — no swapping gear when the walk turns into a trail.</p>
+        <ul class="feature-points">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M5 13l4 4L19 7"/></svg> Fully adjustable 4-point fit</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M5 13l4 4L19 7"/></svg> Built-in patch panels for ID/morale patches</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M5 13l4 4L19 7"/></svg> Same harness for walks, hikes, and travel</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ============ COMPARISON ============ -->
+<section class="compare-section">
+  <div class="wrap">
+    <div class="section-head center">
+      <div class="eyebrow" style="justify-content:center;">The Difference</div>
+      <h2>Not all harnesses are built the same.</h2>
+      <p class="center">Here's what actually changes when you put real materials behind a daily-use product.</p>
+    </div>
+    <div class="compare-table-wrap">
+      <table class="compare-table">
+        <thead>
+          <tr>
+            <th></th>
+            <th class="k9-col">K9Nova™</th>
+            <th class="ord-col">Ordinary Harness</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Material</td>
+            <td class="k9-col">1680D ballistic nylon</td>
+            <td>Standard polyester</td>
+          </tr>
+          <tr>
+            <td>Pull control</td>
+            <td class="k9-col"><span class="check">✓</span> Dual front/back clip</td>
+            <td>Single back clip only</td>
+          </tr>
+          <tr>
+            <td>Night visibility</td>
+            <td class="k9-col"><span class="check">✓</span> 360° reflective</td>
+            <td><span class="cross">✕</span> None or partial</td>
+          </tr>
+          <tr>
+            <td>Control handle</td>
+            <td class="k9-col"><span class="check">✓</span> Reinforced grip</td>
+            <td><span class="cross">✕</span> Usually absent</td>
+          </tr>
+          <tr>
+            <td>Padding</td>
+            <td class="k9-col">Breathable air-mesh</td>
+            <td>Thin foam, retains heat</td>
+          </tr>
+          <tr>
+            <td>Adjustability</td>
+            <td class="k9-col">4-point fit system</td>
+            <td>2-point, loose fit</td>
+          </tr>
+          <tr>
+            <td>Built for</td>
+            <td class="k9-col">Daily wear + trail use</td>
+            <td>Light, occasional walks</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ============ LIFESTYLE GALLERY ============ -->
+<section class="lifestyle-section">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">In The Field</div>
+      <h2>Wherever the walk takes you.</h2>
+    </div>
+    <div class="masonry">
+      <div class="masonry-item"><img src="images/1000226807.jpg" alt="Hiking at sunrise with dog in K9Nova harness"><div class="ov"><span>Summit Trail · Dawn</span></div></div>
+      <div class="masonry-item"><img src="images/1000226803.jpg" alt="Owner and dog on estate lawn"><div class="ov"><span>Home Grounds</span></div></div>
+      <div class="masonry-item"><img src="images/1000226804.jpg" alt="Fitting the harness indoors"><div class="ov"><span>Fit Check</span></div></div>
+      <div class="masonry-item"><img src="images/1000226782.jpg" alt="Dog standing on mountain summit"><div class="ov"><span>Ridge Line</span></div></div>
+      <div class="masonry-item"><img src="images/1000226806.jpg" alt="Kneeling with dog outside modern home"><div class="ov"><span>Evening Walk</span></div></div>
+      <div class="masonry-item"><img src="images/1000226805.jpg" alt="Walking dog along driveway path"><div class="ov"><span>Daily Route</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ REVIEWS ============ -->
+<section class="reviews-section" id="reviews">
+  <div class="wrap">
+    <div class="reviews-summary">
+      <div class="score-big">4.9</div>
+      <div class="score-meta">
+        <span class="stars">★★★★★</span>
+        <span class="count">Based on 2,847 verified reviews</span>
+      </div>
+    </div>
+    <div class="reviews-grid">
+      <div class="review-card">
+        <div class="review-top">
+          <div class="avatar">JM</div>
+          <div class="review-name">
+            <span class="name">Jordan M. <span class="verified">✓ Verified</span></span>
+            <span class="dog">Owner of a Belgian Malinois</span>
+          </div>
+        </div>
+        <span class="stars">★★★★★</span>
+        <p>My dog used to drag me down the block. Three walks into using this and she's actually checking in with me instead of pulling ahead. The handle has saved me twice already at crosswalks.</p>
+        <div class="rdate">Posted 3 weeks ago</div>
+      </div>
+      <div class="review-card">
+        <div class="review-top">
+          <div class="avatar">AR</div>
+          <div class="review-name">
+            <span class="name">Ana R. <span class="verified">✓ Verified</span></span>
+            <span class="dog">Owner of a German Shepherd</span>
+          </div>
+        </div>
+        <span class="stars">★★★★★</span>
+        <p>The material quality is what sold me — this doesn't feel like a $20 harness. Stitching is clean, buckles feel solid, and it's held up through mud, rain, and one very determined squirrel chase.</p>
+        <div class="rdate">Posted 1 month ago</div>
+      </div>
+      <div class="review-card">
+        <div class="review-top">
+          <div class="avatar">TK</div>
+          <div class="review-name">
+            <span class="name">Theo K. <span class="verified">✓ Verified</span></span>
+            <span class="dog">Owner of a Husky mix</span>
+          </div>
+        </div>
+        <span class="stars">★★★★★</span>
+        <p>We hike a lot and I was tired of harnesses falling apart after a season. This one has been on every trail with us for months and still looks new. The reflective trim is genuinely bright at night too.</p>
+        <div class="rdate">Posted 1 month ago</div>
+      </div>
+      <div class="review-card">
+        <div class="review-top">
+          <div class="avatar">SL</div>
+          <div class="review-name">
+            <span class="name">Sarah L. <span class="verified">✓ Verified</span></span>
+            <span class="dog">Owner of a Labrador</span>
+          </div>
+        </div>
+        <span class="stars">★★★★★</span>
+        <p>Sizing guide was accurate and the fit is snug without being tight. My lab can't wriggle out of this the way she could with her old harness. Worth every penny.</p>
+        <div class="rdate">Posted 2 months ago</div>
+      </div>
+      <div class="review-card">
+        <div class="review-top">
+          <div class="avatar">DP</div>
+          <div class="review-name">
+            <span class="name">Daniel P. <span class="verified">✓ Verified</span></span>
+            <span class="dog">Owner of a working K9</span>
+          </div>
+        </div>
+        <span class="stars">★★★★★</span>
+        <p>I use this for training sessions and it holds up exactly how working gear should. No fraying after heavy use, and the front clip genuinely changes pulling behavior within days.</p>
+        <div class="rdate">Posted 2 months ago</div>
+      </div>
+      <div class="review-card">
+        <div class="review-top">
+          <div class="avatar">MC</div>
+          <div class="review-name">
+            <span class="name">Maya C. <span class="verified">✓ Verified</span></span>
+            <span class="dog">Owner of a rescue mix</span>
+          </div>
+        </div>
+        <span class="stars">★★★★★</span>
+        <p>My rescue is nervous around traffic and the added control from the handle has made our walks so much calmer for both of us. Comfortable for her too — no more rubbing under the arms.</p>
+        <div class="rdate">Posted 3 months ago</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FAQ ============ -->
+<section class="faq-section" id="faq">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Good To Know</div>
+      <h2>Questions, answered.</h2>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item open">
+        <button class="faq-q">How do I find the right size?
+          <span class="plus"></span>
+        </button>
+        <div class="faq-a"><p>Measure your dog's chest girth at the widest point, just behind the front legs. Match that measurement to the size chart on this page — if your dog falls between two sizes, we recommend sizing up for comfort during growth or winter coats.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Will this actually stop my dog from pulling?
+          <span class="plus"></span>
+        </button>
+        <div class="faq-a"><p>The front-clip design redirects forward momentum back toward you rather than letting your dog drive forward against pressure. Most owners see a noticeable change within the first few walks, though consistent leash habits still matter alongside the gear.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Is it machine washable?
+          <span class="plus"></span>
+        </button>
+        <div class="faq-a"><p>Yes. Hand wash or gentle machine cycle in cold water, then air dry. Avoid high heat, which can affect the reflective stitching over time.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">How long does shipping take?
+          <span class="plus"></span>
+        </button>
+        <div class="faq-a"><p>Orders ship within 24 hours and typically arrive within 3–6 business days, depending on your location. You'll receive tracking information by email as soon as it ships.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">What if it doesn't fit or work for my dog?
+          <span class="plus"></span>
+        </button>
+        <div class="faq-a"><p>You're covered by our 30-day money-back guarantee. If it's not the right fit, reach out to our support team and we'll sort out a return or exchange — no hassle.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Does it work for large or giant breeds?
+          <span class="plus"></span>
+        </button>
+        <div class="faq-a"><p>Yes — our XL size fits chest measurements up to 42 inches, covering most large working breeds. If you're unsure, our support team is happy to help you confirm fit before you order.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ BRAND STORY ============ -->
+<section class="story-section" id="story">
+  <div class="contour"></div>
+  <div class="wrap story-inner">
+    <div class="eyebrow">Why K9Nova</div>
+    <h2>We build gear like your dog's safety depends on it. Because it does.</h2>
+    <p>K9Nova started with a simple frustration: most dog gear is designed to look good in a product photo, not to survive a real life. Trail dust, rain, a sudden lunge at a squirrel, three hundred walks a year — ordinary harnesses weren't built for any of it.</p>
+    <p>So we went to the source. We studied the materials used in working and service dog equipment, the kind built for dogs that can't afford gear failure, and brought that same standard to a harness anyone could buy. Mil-spec nylon. Reinforced stress points. A fit system that actually adjusts to your dog, not just the size chart.</p>
+    <p>Every K9Nova harness is tested the way it'll actually be used — on trails, in rain, against dogs that pull harder than they should. If it can't hold up there, it doesn't ship.</p>
+    <div class="story-sig">The K9Nova Team</div>
+  </div>
+</section>
+
+<!-- ============ TRUST GRID ============ -->
+<section class="trust-section">
+  <div class="wrap">
+    <div class="trust-grid">
+      <div class="trust-item">
+        <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.6"><path d="M3 8h13v8H3V8zm13 3h3l2 3v2h-5v-5z"/><circle cx="7" cy="18" r="1.6"/><circle cx="17" cy="18" r="1.6"/></svg></span>
+        <span>Free Shipping</span>
+      </div>
+      <div class="trust-item">
+        <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.6"><path d="M12 3l7 3v6c0 5-3 8-7 9-4-1-7-4-7-9V6l7-3z"/></svg></span>
+        <span>30-Day Money Back</span>
+      </div>
+      <div class="trust-item">
+        <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.6"><rect x="4" y="11" width="16" height="9" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg></span>
+        <span>Secure Checkout</span>
+      </div>
+      <div class="trust-item">
+        <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.6"><path d="M12 2l3 7h7l-5.5 4.5L18 21l-6-4-6 4 1.5-7.5L2 9h7l3-7z"/></svg></span>
+        <span>Premium Materials</span>
+      </div>
+      <div class="trust-item">
+        <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.6"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
+        <span>Fast Delivery</span>
+      </div>
+      <div class="trust-item">
+        <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.6"><path d="M21 11.5a8.38 8.38 0 0 1-9 8.5 8.5 8.5 0 1 1 9-8.5z"/><path d="M8 12h8M8 9h5"/></svg></span>
+        <span>Customer Support</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ STICKY ADD TO CART ============ -->
+<div class="sticky-bar" id="stickyBar">
+  <div class="wrap sticky-inner">
+    <div class="sticky-left">
+      <img src="images/1000226805.jpg" alt="K9Nova harness">
+      <div>
+        <div class="sticky-title">K9Nova™ Tactical No-Pull Harness</div>
+        <div class="sticky-price">$49.98 <span style="opacity:0.5; text-decoration:line-through;">$99.98</span></div>
+      </div>
+    </div>
+    <div class="sticky-right">
+      <span class="sticky-price" style="display:none;" id="stickyPriceMobile">$49.98</span>
+      <a href="#product" class="btn btn-primary">Add to Cart</a>
+    </div>
+  </div>
+</div>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="#" class="logo">K9NOVA<span class="dot">™</span></a>
+        <p>Tactical gear for dogs that don't do ordinary walks. Designed for control, comfort, and trail-grade durability.</p>
+        <div class="social-row">
+          <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg></a>
+          <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.6"><path d="M14 9h3V6h-3a4 4 0 0 0-4 4v2H7v3h3v6h3v-6h3l1-3h-4v-2a1 1 0 0 1 1-1z"/></svg></a>
+          <a href="#" aria-label="TikTok"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.6"><path d="M14 4v11a3 3 0 1 1-3-3"/><path d="M14 4a5 5 0 0 0 5 5"/></svg></a>
+          <a href="#" aria-label="YouTube"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.6"><rect x="3" y="6" width="18" height="12" rx="3"/><path d="M11 9.5l4 2.5-4 2.5z"/></svg></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="#product">Shop Harness</a></li>
+          <li><a href="#features">Features</a></li>
+          <li><a href="#reviews">Reviews</a></li>
+          <li><a href="#story">Our Story</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Support</h4>
+        <ul>
+          <li><a href="#faq">FAQ</a></li>
+          <li><a href="#">Sizing Guide</a></li>
+          <li><a href="#">Track Order</a></li>
+          <li><a href="#">Contact Us</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Policies</h4>
+        <ul>
+          <li><a href="#">Shipping Policy</a></li>
+          <li><a href="#">Returns &amp; Refunds</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Terms of Service</a></li>
+        </ul>
+      </div>
+      <div class="footer-col newsletter">
+        <h4>Stay In The Loop</h4>
+        <p>Trail tips, new gear drops, and the occasional good dog photo.</p>
+        <form class="newsletter-form" onsubmit="event.preventDefault();">
+          <input type="email" placeholder="Your email address" required>
+          <button type="submit" aria-label="Subscribe"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg></button>
+        </form>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 K9Nova™. All rights reserved.</span>
+      <div class="footer-pay">Visa · Mastercard · PayPal · Shop Pay</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+// ===== NAV SCROLL STATE =====
+const nav = document.getElementById('mainNav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 40);
+});
+
+// ===== MOBILE MENU =====
+const navToggle = document.getElementById('navToggle');
+const mobileMenu = document.getElementById('mobileMenu');
+navToggle.addEventListener('click', () => {
+  navToggle.classList.toggle('open');
+  mobileMenu.classList.toggle('open');
+});
+mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+  navToggle.classList.remove('open');
+  mobileMenu.classList.remove('open');
+}));
+
+// ===== HERO SLIDER =====
+const slides = document.querySelectorAll('.hero-slide');
+const dotsWrap = document.getElementById('heroDots');
+let currentSlide = 0;
+let slideTimer;
+
+slides.forEach((_, i) => {
+  const dot = document.createElement('div');
+  dot.className = 'hero-dot' + (i === 0 ? ' active' : '');
+  dot.addEventListener('click', () => goToSlide(i));
+  dotsWrap.appendChild(dot);
+});
+const dots = dotsWrap.querySelectorAll('.hero-dot');
+
+function goToSlide(i){
+  slides[currentSlide].classList.remove('active');
+  dots[currentSlide].classList.remove('active');
+  currentSlide = i;
+  slides[currentSlide].classList.add('active');
+  dots[currentSlide].classList.add('active');
+  restartTimer();
+}
+function nextSlide(){
+  let i = (currentSlide + 1) % slides.length;
+  goToSlide(i);
+}
+function restartTimer(){
+  clearInterval(slideTimer);
+  slideTimer = setInterval(nextSlide, 6000);
+}
+restartTimer();
+
+// ===== PRODUCT GALLERY =====
+const galleryMainImg = document.getElementById('galleryMainImg');
+const galleryBadge = document.querySelector('.gallery-badge');
+document.querySelectorAll('.thumb').forEach(thumb => {
+  thumb.addEventListener('click', () => {
+    document.querySelectorAll('.thumb').forEach(t => t.classList.remove('active'));
+    thumb.classList.add('active');
+    galleryMainImg.style.opacity = 0;
+    setTimeout(() => {
+      galleryMainImg.src = thumb.dataset.img;
+      galleryBadge.textContent = thumb.dataset.badge;
+      galleryMainImg.style.opacity = 1;
+    }, 180);
+  });
+});
+galleryMainImg.style.transition = 'opacity 0.25s ease';
+
+// ===== COLOR SELECTOR =====
+const colorLabelMap = {olive: 'Olive Drab', black: 'Stealth Black', sand: 'Desert Sand'};
+document.querySelectorAll('.color-swatch').forEach(sw => {
+  sw.addEventListener('click', () => {
+    document.querySelectorAll('.color-swatch').forEach(s => s.classList.remove('active'));
+    sw.classList.add('active');
+    document.getElementById('colorLabel').textContent = colorLabelMap[sw.dataset.color];
+  });
+});
+
+// ===== SIZE SELECTOR =====
+document.querySelectorAll('.size-pill').forEach(pill => {
+  pill.addEventListener('click', () => {
+    document.querySelectorAll('.size-pill').forEach(p => p.classList.remove('active'));
+    pill.classList.add('active');
+    document.getElementById('sizeLabel').textContent = pill.dataset.desc;
+  });
+});
+
+// ===== QUANTITY =====
+const qtyInput = document.getElementById('qtyInput');
+document.getElementById('qtyMinus').addEventListener('click', () => {
+  let v = parseInt(qtyInput.value);
+  if (v > 1) qtyInput.value = v - 1;
+  updateCartBtn();
+});
+document.getElementById('qtyPlus').addEventListener('click', () => {
+  let v = parseInt(qtyInput.value);
+  if (v < 10) qtyInput.value = v + 1;
+  updateCartBtn();
+});
+function updateCartBtn(){
+  const qty = parseInt(qtyInput.value);
+  const total = (49.98 * qty).toFixed(2);
+  document.getElementById('addToCartBtn').textContent = `Add to Cart — $${total}`;
+}
+
+// ===== FAQ ACCORDION =====
+document.querySelectorAll('.faq-item').forEach(item => {
+  const q = item.querySelector('.faq-q');
+  const a = item.querySelector('.faq-a');
+  if (item.classList.contains('open')) a.style.maxHeight = a.scrollHeight + 'px';
+  q.addEventListener('click', () => {
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i => {
+      i.classList.remove('open');
+      i.querySelector('.faq-a').style.maxHeight = null;
+    });
+    if (!isOpen){
+      item.classList.add('open');
+      a.style.maxHeight = a.scrollHeight + 'px';
+    }
+  });
+});
+
+// ===== STICKY ADD TO CART =====
+const stickyBar = document.getElementById('stickyBar');
+const productSection = document.getElementById('product');
+window.addEventListener('scroll', () => {
+  const rect = productSection.getBoundingClientRect();
+  const pastProduct = rect.bottom < 0;
+  const nearBottom = (window.innerHeight + window.scrollY) >= document.body.scrollHeight - 200;
+  stickyBar.classList.toggle('show', pastProduct && !nearBottom);
+});
+</script>
+
+</body>
+</html>
